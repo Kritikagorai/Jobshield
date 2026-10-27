@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Scam Awareness & Interactive Quiz – JobShield</title>
+    <link rel="icon" type="image/png" href="/images/logo.png">
+  <link rel="apple-touch-icon" href="/images/logo.png">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Emergency Top Bar -->
+  <div class="emergency-top-bar">
+    <div class="top-bar-left">
+      <span class="live-pulse-dot"></span>
+      <span><strong>Student & Fresher Education:</strong> Master Indian employment fraud defense</span>
+    </div>
+    <div class="top-bar-right">
+      <span>Helpline: <strong>1930</strong></span>
+      <a href="/help.html">Victim Emergency Protocol &rarr;</a>
+    </div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <a href="/" class="brand">
+      <div class="brand-icon"><img src="/images/logo.png" alt="JobShield Logo" width="44" height="44" loading="eager"></div>
+      <div class="brand-title-wrap">
+        <span class="brand-title">JobShield</span>
+        <span class="brand-tagline-badge">Education & Cyber Quiz</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/" class="nav-link">Home Scanner</a></li>
+      <li><a href="/verify.html" class="nav-link">Verify Letter</a></li>
+      <li><a href="/learn.html" class="nav-link active">Learn & Quiz</a></li>
+      <li><a href="/help.html" class="nav-link">Victim Help (1930)</a></li>
+      <li>
+        <button id="theme-toggle-btn" class="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle Theme">
+          <span id="theme-icon">🌙</span> <span id="theme-text">Dark</span>
+        </button>
+      </li>
+    </ul>
+  </header>
+
+  <main class="container">
+    <div class="hero">
+      <div class="hero-pill">🎓 Interactive Cyber Awareness Lab</div>
+      <h1>Job Scam Awareness & <span>Interactive Quiz</span></h1>
+      <p>
+        Learn the deceptive psychological traps used by Indian cyber syndicates. Test your readiness with our 10-question real-world scenario quiz and unlock your Cyber Shield Certificate.
+      </p>
+    </div>
+
+    <!-- Live Quiz Score Header -->
+    <div class="card" style="padding: 1.5rem 2rem; background: var(--bg-card); border: 1.5px solid var(--slate-200); margin-bottom: 2rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <span style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--accent-blue); font-weight: 800;">Interactive Assessment</span>
+          <h2 style="font-size: 1.6rem; color: var(--navy-900); margin-top: 0.2rem;">Fresher Job Fraud Readiness Challenge</h2>
+          <p style="font-size: 0.88rem; color: var(--slate-500); margin-top: 0.2rem;">Select an answer for each real-life scenario to reveal instant legal analysis.</p>
+        </div>
+        <div style="text-align: right;">
+          <div style="font-size: 2.2rem; font-weight: 800; color: var(--accent-blue);" id="quiz-score-display">0 / 10</div>
+          <span id="quiz-status-badge" class="pillar-badge info" style="font-size: 0.8rem;">IN PROGRESS</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Questions Container -->
+    <div id="quiz-questions-wrapper">
+      <!-- Populated by JavaScript -->
+    </div>
+
+    <!-- Safe-Apply Interactive 10-Point Checklist -->
+    <div class="card" style="padding: 2rem; margin-top: 3rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <h3 style="font-size: 1.35rem; color: var(--navy-900);">✅ 10-Point Safe-Apply Pre-Flight Checklist</h3>
+          <p style="font-size: 0.88rem; color: var(--slate-500);">Never accept an offer or transfer money until all 10 criteria are verified:</p>
+        </div>
+        <button class="btn btn-secondary" onclick="checkAllChecklist()">Check All Items</button>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 0.85rem;" id="checklist-items-grid">
+        <!-- Checkbox items -->
+        <label class="reason-item" style="cursor: pointer; user-select: none;">
+          <input type="checkbox" style="width: 20px; height: 20px; accent-color: var(--accent-blue); margin-top: 2px;">
+          <div>
+            <strong style="color: var(--navy-900);">1. Recruiter uses Official Business Domain</strong>
+            <p style="font-size: 0.85rem; color: var(--slate-500);">Email is @company.com, not @gmail.com or @yahoo.com</p>
+          </div>
+        </label>
+
+        <label class="reason-item" style="cursor: pointer; user-select: none;">
+          <input type="checkbox" style="width: 20px; height: 20px; accent-color: var(--accent-blue); margin-top: 2px;">
+          <div>
+            <strong style="color: var(--navy-900);">2. Strict Zero Upfront Fee Policy</strong>
+            <p style="font-size: 0.85rem; color: var(--slate-500);">No laptop deposit, uniform fee, gate pass, or training charges</p>
+          </div>
+        </label>
+
+        <label class="reason-item" style="cursor: pointer; user-select: none;">
+          <input type="checkbox" style="width: 20px; height: 20px; accent-color: var(--accent-blue); margin-top: 2px;">
+          <div>
+            <strong style="color: var(--navy-900);">3. Proper Multi-Stage Interview Process</strong>
+            <p style="font-size: 0.85rem; color: var(--slate-500);">Evaluated via technical interview, not instant direct selection on WhatsApp</p>
+          </div>
+        </label>
+
+        <label class="reason-item" style="cursor: pointer; user-select: none;">
+          <input type="checkbox" style="width: 20px; height: 20px; accent-color: var(--accent-blue); margin-top: 2px;">
+          <div>
+            <strong style="color: var(--navy-900);">4. Valid Corporate CIN Verified</strong>
+            <p style="font-size: 0.85rem; color: var(--slate-500);">Company has genuine 21-character CIN listed on MCA portal</p>
+          </div>
+        </label>
+
+        <label class="reason-item" style="cursor: pointer; user-select: none;">
+          <input type="checkbox" style="width: 20px; height: 20px; accent-color: var(--accent-blue); margin-top: 2px;">
+          <div>
+            <strong style="color: var(--navy-900);">5. No OTP or Bank Credentials Disclosed</strong>
+            <p style="font-size: 0.85rem; color: var(--slate-500);">Never share OTPs, blank signed cheques, or passwords</p>
+          </div>
+        </label>
+
+        <label class="reason-item" style="cursor: pointer; user-select: none;">
+          <input type="checkbox" style="width: 20px; height: 20px; accent-color: var(--accent-blue); margin-top: 2px;">
+          <div>
+            <strong style="color: var(--navy-900);">6. Market-Realistic Compensation</strong>
+            <p style="font-size: 0.85rem; color: var(--slate-500);">Offered CTC aligns with Indian fresher industry medians (3.5 - 7.5 LPA)</p>
+          </div>
+        </label>
+
+        <label class="reason-item" style="cursor: pointer; user-select: none;">
+          <input type="checkbox" style="width: 20px; height: 20px; accent-color: var(--accent-blue); margin-top: 2px;">
+          <div>
+            <strong style="color: var(--navy-900);">7. Physical Corporate Office Address Exists</strong>
+            <p style="font-size: 0.85rem; color: var(--slate-500);">Verified office address on Google Maps & registered office record</p>
+          </div>
+        </label>
+
+        <label class="reason-item" style="cursor: pointer; user-select: none;">
+          <input type="checkbox" style="width: 20px; height: 20px; accent-color: var(--accent-blue); margin-top: 2px;">
+          <div>
+            <strong style="color: var(--navy-900);">8. Verified against JobShield Syndicate DB</strong>
+            <p style="font-size: 0.85rem; color: var(--slate-500);">Scanned recruiter phone number & UPI handle on JobShield</p>
+          </div>
+        </label>
+
+        <label class="reason-item" style="cursor: pointer; user-select: none;">
+          <input type="checkbox" style="width: 20px; height: 20px; accent-color: var(--accent-blue); margin-top: 2px;">
+          <div>
+            <strong style="color: var(--navy-900);">9. No Artificial 2-Hour Urgency Traps</strong>
+            <p style="font-size: 0.85rem; color: var(--slate-500);">Reputable companies give 5-7 days to review offer letters</p>
+          </div>
+        </label>
+
+        <label class="reason-item" style="cursor: pointer; user-select: none;">
+          <input type="checkbox" style="width: 20px; height: 20px; accent-color: var(--accent-blue); margin-top: 2px;">
+          <div>
+            <strong style="color: var(--navy-900);">10. Zero Threats of Legal / Police Action</strong>
+            <p style="font-size: 0.85rem; color: var(--slate-500);">Declining an offer letter is a candidate's lawful right</p>
+          </div>
+        </label>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <p><strong>JobShield Student Awareness</strong> – "Scam hone se pehle pakdo" | Helpline: <strong>1930</strong></p>
+    <div class="footer-links">
+      <a href="/">Home Scanner</a>
+      <a href="/verify.html">Forensic Verifier</a>
+      <a href="/help.html">Victim Help (1930)</a>
+    </div>
+  </footer>
+
+  <script>
+    const QUIZ_QUESTIONS = [
+      {
+        q: "1. A recruiter from 'TCS Recruitment Hub' sends an offer on WhatsApp offering 8.5 LPA without any technical interview, asking for Rs 2,999 refundable laptop courier insurance via Google Pay. What should you do?",
+        options: [
+          { text: "Pay immediately since it is refundable and TCS is a reputable company.", correct: false },
+          { text: "Never pay. TCS has a strict zero-fee policy; legitimate employers never charge for equipment or courier insurance.", correct: true },
+          { text: "Negotiate the courier insurance fee to Rs 1,000.", correct: false }
+        ],
+        explanation: "Rule #1 of Indian Corporate Hiring: Legitimate companies bear 100% of equipment and recruitment costs. Demanding any fee via UPI is 100% fraud."
+      },
+      {
+        q: "2. You receive an email from 'recruiter.infosys.careers@gmail.com' confirming your selection. What is the biggest red flag here?",
+        options: [
+          { text: "They used Gmail instead of the official @infosys.com corporate domain.", correct: true },
+          { text: "The font of the email is Arial.", correct: false },
+          { text: "The email was sent on a Saturday.", correct: false }
+        ],
+        explanation: "Major corporations like Infosys, TCS, and Wipro strictly prohibit HR personnel from communicating with applicants using free public emails like Gmail or Yahoo."
+      },
+      {
+        q: "3. A recruiter threatens that if you don't send Rs 4,999 within 2 hours, they will file an FIR under IPC Section 420 and blacklist you across all Indian IT portals. How should you respond?",
+        options: [
+          { text: "Panic and send the money to protect your Naukri profile.", correct: false },
+          { text: "Ignore the threat and block the number. It is an extortion trap; candidates cannot be arrested or blacklisted for declining an offer.", correct: true },
+          { text: "Apologize and ask for a 24-hour extension.", correct: false }
+        ],
+        explanation: "Employment fraud syndicates use fake legal threats (invoking IPC 420 or portal blacklisting) to induce psychological panic. No such authority exists."
+      },
+      {
+        q: "4. You are offered a part-time job earning Rs 3,000 daily by simply liking YouTube videos and rating Google hotels on Telegram. What type of scam is this?",
+        options: [
+          { text: "Genuine digital marketing freelance gig.", correct: false },
+          { text: "Task Earning & Prepaid Recharge Scam.", correct: true },
+          { text: "Affiliate referral program.", correct: false }
+        ],
+        explanation: "Task Earning scams pay tiny sums (Rs 150) initially to gain trust, then trick victims into depositing thousands in 'VIP task recharges' before freezing all withdrawals."
+      },
+      {
+        q: "5. A company offering a 'Work-from-Home Offline Data Entry' job demands Rs 1,850 for a 'Digital Agreement Stamp Duty & Software Login Key'. Is this standard practice?",
+        options: [
+          { text: "Yes, stamp duty is legally mandatory for all remote agreements.", correct: false },
+          { text: "No, this is a classic typing scam designed to steal fee money and extort victims later.", correct: true },
+          { text: "Only if the company provides a GST invoice.", correct: false }
+        ],
+        explanation: "Data entry/typing scams lure freshers with promises of Rs 30,000/month, demand agreement fees, and then invent errors in work to demand Rs 10,000+ cancellation fees."
+      },
+      {
+        q: "6. An offer letter mentions Corporate Identification Number (CIN) 'L22210MH1995PLC084781'. What does the letter 'L' at the start signify?",
+        options: [
+          { text: "Limited Liability Partnership (LLP)", correct: false },
+          { text: "Listed Company on Indian Stock Exchanges (BSE/NSE)", correct: true },
+          { text: "Local State Government Enterprise", correct: false }
+        ],
+        explanation: "In an MCA CIN, 'L' signifies a publicly Listed company (e.g. TCS), while 'U' signifies an Unlisted company."
+      },
+      {
+        q: "7. You applied for an Airport Ground Staff position. The agency demands Rs 2,500 for an 'Airport Security Gate Pass & Medical Uniform Measurement'. Genuine or scam?",
+        options: [
+          { text: "Genuine, because airports have high security protocols.", correct: false },
+          { text: "Scam. Airport authorities and airlines (IndiGo, Air India) issue security passes directly without cash fees.", correct: true },
+          { text: "Genuine if paid via Paytm.", correct: false }
+        ],
+        explanation: "Aviation ground staff scams are rampant in India. Airport entry passes (BCAS AEPs) are sponsored directly by airlines and airports at zero charge to candidates."
+      },
+      {
+        q: "8. A recruiter asks you to share your netbanking user ID and password to 'verify your salary credit account'. What should you do?",
+        options: [
+          { text: "Share only the password, not the OTP.", correct: false },
+          { text: "Never share banking passwords, OTPs, or debit card PINs under any circumstances.", correct: true },
+          { text: "Create a new bank account with Rs 500 balance and share credentials.", correct: false }
+        ],
+        explanation: "Employers only need your Account Number and IFSC Code for salary deposits. Anyone asking for passwords or OTPs is attempting bank account takeover."
+      },
+      {
+        q: "9. What is the National Cyber Crime Helpline number in India to report job frauds and freeze unauthorized UPI transactions?",
+        options: [
+          { text: "100", correct: false },
+          { text: "1930", correct: true },
+          { text: "1098", correct: false }
+        ],
+        explanation: "1930 is India's dedicated Citizen Financial Cyber Fraud Reporting System helpline operated by the Ministry of Home Affairs (MHA)."
+      },
+      {
+        q: "10. What is the 'Golden Hour' in cyber fraud reporting?",
+        options: [
+          { text: "The first 2 hours immediately after money is transferred, when banks can freeze the suspect account before withdrawal.", correct: true },
+          { text: "The 24-hour window before joining a job.", correct: false },
+          { text: "The time of day when cybercrime portals open.", correct: false }
+        ],
+        explanation: "Reporting to 1930 within the Golden Hour allows police and banks to place an immediate lien on the fraudster's UPI/bank account before funds are laundered."
+      }
+    ];
+
+    let userScore = 0;
+    let answeredQuestions = new Set();
+
+    document.addEventListener("DOMContentLoaded", () => {
+      renderQuiz();
+    });
+
+    function renderQuiz() {
+      const container = document.getElementById("quiz-questions-wrapper");
+      if (!container) return;
+      container.innerHTML = "";
+
+      QUIZ_QUESTIONS.forEach((qObj, qIdx) => {
+        const box = document.createElement("div");
+        box.className = "quiz-question-box";
+        box.id = `quiz-box-${qIdx}`;
+
+        let optsHtml = "";
+        qObj.options.forEach((opt, oIdx) => {
+          optsHtml += `
+            <button class="quiz-option-btn" id="q${qIdx}-opt${oIdx}" onclick="selectAnswer(${qIdx}, ${oIdx})">
+              ${opt.text}
+            </button>
+          `;
+        });
+
+        box.innerHTML = `
+          <h4 style="font-size: 1.08rem; color: var(--navy-900); font-weight: 700; margin-bottom: 1rem;">${qObj.q}</h4>
+          <div class="options-group">${optsHtml}</div>
+          <div class="quiz-explanation-box" id="q${qIdx}-exp">
+            <strong>💡 Legal & Fraud Analysis:</strong> ${qObj.explanation}
+          </div>
+        `;
+        container.appendChild(box);
+      });
+    }
+
+    function selectAnswer(qIdx, oIdx) {
+      if (answeredQuestions.has(qIdx)) return;
+      answeredQuestions.add(qIdx);
+
+      const qObj = QUIZ_QUESTIONS[qIdx];
+      const selectedOpt = qObj.options[oIdx];
+      const clickedBtn = document.getElementById(`q${qIdx}-opt${oIdx}`);
+      const expBox = document.getElementById(`q${qIdx}-exp`);
+
+      if (selectedOpt.correct) {
+        clickedBtn.classList.add("correct");
+        clickedBtn.innerHTML = "✅ " + clickedBtn.innerHTML;
+        userScore += 1;
+      } else {
+        clickedBtn.classList.add("incorrect");
+        clickedBtn.innerHTML = "❌ " + clickedBtn.innerHTML;
+        // Highlight the correct one
+        qObj.options.forEach((opt, idx) => {
+          if (opt.correct) {
+            const correctBtn = document.getElementById(`q${qIdx}-opt${idx}`);
+            correctBtn.classList.add("correct");
+            correctBtn.innerHTML = "✅ " + correctBtn.innerHTML;
+          }
+        });
+      }
+
+      expBox.style.display = "block";
+      updateScoreUI();
+    }
+
+    function updateScoreUI() {
+      const scoreElem = document.getElementById("quiz-score-display");
+      const badgeElem = document.getElementById("quiz-status-badge");
+      scoreElem.textContent = `${userScore} / 10`;
+
+      if (answeredQuestions.size === 10) {
+        if (userScore >= 8) {
+          badgeElem.className = "pillar-badge pass";
+          badgeElem.textContent = "🛡️ CYBER SENTINEL (CERTIFIED)";
+        } else if (userScore >= 5) {
+          badgeElem.className = "pillar-badge warn";
+          badgeElem.textContent = "⚠️ MODERATE AWARENESS";
+        } else {
+          badgeElem.className = "pillar-badge fail";
+          badgeElem.textContent = "🚨 HIGH VULNERABILITY";
+        }
+      }
+    }
+
+    function checkAllChecklist() {
+      document.querySelectorAll('#checklist-items-grid input[type="checkbox"]').forEach(cb => cb.checked = true);
+    }
+  </script>
+  <script src="/js/app.js"></script>
+</body>
+</html>

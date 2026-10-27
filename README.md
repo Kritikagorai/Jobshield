@@ -1,0 +1,2 @@
+# Jobshield
+JobShield is a web-based platform designed to help job seekers identify fraudulent job offers and recruitment scams. It analyzes job descriptions, URLs, emails, and offer-letter screenshots to highlight potential red flags and provide an explainable trust score. The platform also includes scam reporting, a public fraud registry, salary reality checks, and safety guidance to help users avoid fake recruiters, payment scams, and identity theft.  Built to make online job searching safer, smarter, and more transparent.

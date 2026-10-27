@@ -1,0 +1,113 @@
+{
+  "_notice": "DEMO DATA - Known scam message templates with report counts for JobShield similarity matching",
+  "templates": [
+    {
+      "id": "SCAM-TPL-001",
+      "category": "Task Earning Scam",
+      "title": "YouTube Video Like & Telegram Task Scam",
+      "text": "Dear candidate, you have been selected for part time work from home. Daily earn Rs 2000 to Rs 5000 by just liking YouTube videos and rating Google hotels. Contact HR Pooja on Telegram @hrmanager_pooja. No experience required. Immediate payout via UPI.",
+      "report_count": 342,
+      "typical_fee": 1500,
+      "risk_level": "High"
+    },
+    {
+      "id": "SCAM-TPL-002",
+      "category": "Registration / Kit Fee Scam",
+      "title": "IT Software Engineer Mandatory Training & Laptop Kit Fee",
+      "text": "Congratulations! Your resume has been shortlisted for Junior Software Developer at leading MNC. Package 6.5 LPA. To confirm your joining date and ship corporate laptop kit, deposit refundable security amount of Rs 4,999 to company account via Google Pay / PhonePe.",
+      "report_count": 518,
+      "typical_fee": 4999,
+      "risk_level": "High"
+    },
+    {
+      "id": "SCAM-TPL-003",
+      "category": "Aviation Ground Staff Scam",
+      "title": "Direct Airport Ground Staff & Cabin Crew Selection",
+      "text": "Urgent recruitment for Airport Cargo Ground Staff, Ticketing Executive in Delhi / Mumbai Airport. 10th and 12th pass eligible. Salary 35,000 to 55,000 per month with free food and accommodation. Pay gate pass medical verification fee Rs 2,500 immediately.",
+      "report_count": 289,
+      "typical_fee": 2500,
+      "risk_level": "High"
+    },
+    {
+      "id": "SCAM-TPL-004",
+      "category": "Data Entry / Typing Scam",
+      "title": "Offline Data Entry Page Typing Agreement Scam",
+      "text": "Earn Rs 30,000 monthly typing simple manuscript pages at home. 500 pages in 10 days. Accuracy 90% required. Before starting work, pay digital agreement stamp duty and software login charges of Rs 1,850. Legal penalty applies if work not submitted.",
+      "report_count": 412,
+      "typical_fee": 1850,
+      "risk_level": "High"
+    },
+    {
+      "id": "SCAM-TPL-005",
+      "category": "WhatsApp Interview Scam",
+      "title": "Immediate WhatsApp Direct Selection Without Interview",
+      "text": "Dear applicant, your profile from Naukri.com is selected for Back Office Executive. No written test or formal interview needed. Salary Rs 42,000 per month. Join WhatsApp group or message HR Priya on 9876543210 with your Aadhaar, PAN card and bank details right now.",
+      "report_count": 275,
+      "typical_fee": 0,
+      "risk_level": "High"
+    },
+    {
+      "id": "SCAM-TPL-006",
+      "category": "Overseas Gulf Job Scam",
+      "title": "Dubai / Singapore Oil Rig & Hotel Work Permit Scam",
+      "text": "Guaranteed 2-year work visa for Dubai UAE. Helper, Electrician, Supervisor salary 4,500 AED (approx 1,05,000 INR). Free flight ticket and visa. Pay immigration document attestation and embassy clearance charge Rs 15,000 via UPI.",
+      "report_count": 194,
+      "typical_fee": 15000,
+      "risk_level": "High"
+    },
+    {
+      "id": "SCAM-TPL-007",
+      "category": "Impersonation Scam",
+      "title": "Tata Consultancy Services Impersonation Offer Letter",
+      "text": "Tata Consultancy Services Ltd - Letter of Appointment. We are pleased to offer you the position of Systems Engineer at Pune campus. Annual CTC INR 8,40,000. You are requested to transfer Rs 8,500 as refundable security deposit for background screening verification.",
+      "report_count": 620,
+      "typical_fee": 8500,
+      "risk_level": "High"
+    },
+    {
+      "id": "SCAM-TPL-008",
+      "category": "Government Railway / Postal Scam",
+      "title": "Direct Recruitment in Indian Railways / Post Office without Exam",
+      "text": "Direct recruitment quota in Railway Ticket Checker / Postman. No RRB exam required. Direct joining letter signed by ministry officer. Submit your original educational certificates and registration fee Rs 12,000 to our authorized coordinator.",
+      "report_count": 366,
+      "typical_fee": 12000,
+      "risk_level": "High"
+    },
+    {
+      "id": "SCAM-TPL-009",
+      "category": "Crypto / Review Task Scam",
+      "title": "Hotel Rating & Crypto Recharging Prepaid Tasks",
+      "text": "Hello, I am HR manager from international travel agency. We offer daily 15-20 minutes task rating hotels on TripAdvisor. Trial task completed: you received Rs 300 bonus. To unlock premium VIP tasks and withdraw Rs 50,000, recharge Rs 10,000 into crypto wallet.",
+      "report_count": 480,
+      "typical_fee": 10000,
+      "risk_level": "High"
+    },
+    {
+      "id": "SCAM-TPL-010",
+      "category": "Urgent Courier / Logistics Delivery Scam",
+      "title": "Delivery Partner Van Deposit & Uniform Fee Scam",
+      "text": "Hiring Delivery Executives for Flipkart / Amazon hub. Fixed salary Rs 28,000 + Rs 5 per packet delivery + petrol allowance. Immediate spot joining today. Submit Rs 3,200 for company branded uniform, bag, identity card and security scanner.",
+      "report_count": 210,
+      "typical_fee": 3200,
+      "risk_level": "High"
+    },
+    {
+      "id": "SCAM-TPL-011",
+      "category": "Banking KYC Phishing Scam",
+      "title": "Private Bank Relationship Officer Onboarding OTP Scam",
+      "text": "Congratulations on selection as Assistant Branch Manager at HDFC Bank. Onboarding requires salary account activation. Share the 6-digit verification code (OTP) received on your mobile and upload blank cheque image to activate your employee ID.",
+      "report_count": 330,
+      "typical_fee": 0,
+      "risk_level": "High"
+    },
+    {
+      "id": "SCAM-TPL-012",
+      "category": "Medical / Pharmaceutical Scam",
+      "title": "Hospital Lab Assistant Medical License Fee Scam",
+      "text": "Direct recruitment for Apollo Hospitals lab technician and nursing assistant. Monthly stipend Rs 32,000. Registration closing in next 2 hours. Transfer Rs 3,500 towards mandatory COVID/NABL state medical council verification pass.",
+      "report_count": 145,
+      "typical_fee": 3500,
+      "risk_level": "High"
+    }
+  ]
+}

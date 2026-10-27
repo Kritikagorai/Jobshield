@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JobShield – Cyber Fraud Intelligence | Scam hone se pehle pakdo</title>
+    <link rel="icon" type="image/png" href="/images/logo.png">
+  <link rel="apple-touch-icon" href="/images/logo.png">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+
+  <!-- Emergency Top Bar -->
+  <div class="emergency-top-bar">
+    <div class="top-bar-left">
+      <span class="live-pulse-dot"></span>
+      <span><strong>Live Cyber Threat Feed:</strong> Real-time detection across Indian job portals & WhatsApp recruitment rings</span>
+    </div>
+    <div class="top-bar-right">
+      <span>National Cyber Helpline: <strong>1930</strong></span>
+      <a href="/help.html">Victim Protocol & Complaints &rarr;</a>
+    </div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <a href="/" class="brand">
+      <div class="brand-icon"><img src="/images/logo.png" alt="JobShield Logo" width="44" height="44" loading="eager"></div>
+      <div class="brand-title-wrap">
+        <span class="brand-title">JobShield</span>
+        <span class="brand-tagline-badge" data-i18n="tagline">Scam hone se pehle pakdo</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/" class="nav-link active">Home Scanner</a></li>
+      <li><a href="/verify.html" class="nav-link">Verify Letter</a></li>
+      <li><a href="/learn.html" class="nav-link">Learn & Quiz</a></li>
+      <li><a href="/help.html" class="nav-link">Victim Help (1930)</a></li>
+      <li>
+        <button id="theme-toggle-btn" class="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle Theme">
+          <span id="theme-icon">🌙</span> <span id="theme-text">Dark</span>
+        </button>
+      </li>
+      <li>
+        <button id="lang-toggle-btn" class="lang-btn" onclick="toggleLanguage()">🇮🇳 हिंदी</button>
+      </li>
+    </ul>
+  </header>
+
+  <!-- Main Container -->
+  <main class="container">
+    
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-pill">⚡ AI-Powered Indian Job Scam Protection & Syndicate Tracking</div>
+      <h1>Scam Hone Se Pehle Pakdo with <span>JobShield</span></h1>
+      <p data-i18n="subtitle">
+        Verify job offers, recruiter corporate emails, UPI handles, and salary claims against authentic MCA company registries and Indian market compensation surveys.
+      </p>
+    </section>
+
+    <!-- Interactive Tool Switcher Navigation -->
+    <div class="tool-switcher-bar">
+      <button class="tool-tab-btn active" data-tool="scanner" onclick="switchTool('scanner')">🛡️ Multimodal Scam Scanner</button>
+      <button class="tool-tab-btn" data-tool="salary" onclick="switchTool('salary')">💰 Salary Reality Check</button>
+      <button class="tool-tab-btn" data-tool="domain" onclick="switchTool('domain')">🌐 Recruiter Domain Checker</button>
+      <button class="tool-tab-btn" data-tool="payment" onclick="switchTool('payment')">💳 Should I Pay?</button>
+      <button class="tool-tab-btn" data-tool="indicator" onclick="switchTool('indicator')">🔎 Syndicate Intelligence Search</button>
+    </div>
+
+    <!-- ========================================================
+         TOOL PANEL 1: MULTIMODAL SCAM SCANNER
+         ======================================================== -->
+    <div id="tool-panel-scanner" class="tool-panel">
+      
+      <!-- Quick Presets Demo Box (1-Click Testing) -->
+      <div class="quick-presets-box">
+        <span class="presets-label">⚡ 1-Click Test Scenarios:</span>
+        <button class="preset-chip" onclick="loadPreset('genuine')">🟢 Genuine TCS Offer Letter</button>
+        <button class="preset-chip" onclick="loadPreset('laptop_scam')">🔴 Fake TCS Laptop Fee Scam</button>
+        <button class="preset-chip" onclick="loadPreset('airport_scam')">🔴 Airport Ground Staff Pass Scam</button>
+        <button class="preset-chip" onclick="loadPreset('typing_scam')">🟠 Work-From-Home Typing Scam</button>
+      </div>
+
+      <!-- Main Scanner Card -->
+      <div class="card">
+        <div class="tabs-header">
+          <button class="tab-btn active" data-tab="text" data-i18n="tab_text">📝 Job Description</button>
+          <button class="tab-btn" data-tab="url" data-i18n="tab_url">🔗 Job / Portal URL</button>
+          <button class="tab-btn" data-tab="contact" data-i18n="tab_contact">📱 Email or Phone</button>
+          <button class="tab-btn" data-tab="upload" data-i18n="tab_upload">📄 Upload File / Letter</button>
+        </div>
+
+        <!-- Tab 1: Text -->
+        <div class="tab-content active" id="tab-content-text">
+          <div class="form-group">
+            <label class="form-label" for="input-text">Paste Job Offer, WhatsApp message, or Email body:</label>
+            <textarea id="input-text" class="form-control" placeholder="e.g. Congratulations! You are selected for Junior Developer at MNC. Salary 6.5 LPA. Pay refundable laptop fee Rs 4999 via Google Pay to HR Pooja on Telegram..."></textarea>
+          </div>
+          <div class="form-group" style="margin-top: 0.75rem;">
+            <label class="form-label" for="input-company-name" style="font-size:0.85rem; color: var(--slate-500);">🏢 Company Name <span style="font-weight:400; font-style:italic;">(optional — helps if auto-detection misses it)</span></label>
+            <input type="text" id="input-company-name" class="form-control" style="font-size:0.9rem;" placeholder="e.g. Cognizant, Infosys, Razorpay, Zepto…">
+          </div>
+        </div>
+
+        <!-- Tab 2: URL -->
+        <div class="tab-content" id="tab-content-url">
+          <div class="form-group">
+            <label class="form-label" for="input-url">Recruiter Website or Job Posting URL:</label>
+            <input type="url" id="input-url" class="form-control" placeholder="e.g. https://tcs-hiring-portal.online or https://daily-payout-jobs.live">
+          </div>
+        </div>
+
+        <!-- Tab 3: Contact -->
+        <div class="tab-content" id="tab-content-contact">
+          <div class="form-group">
+            <label class="form-label" for="input-email">Recruiter Email Address:</label>
+            <input type="email" id="input-email" class="form-control" placeholder="e.g. hr.tcsrecruitment@gmail.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="input-phone">Recruiter WhatsApp / Contact Number:</label>
+            <input type="tel" id="input-phone" class="form-control" placeholder="e.g. +91 98765 43210">
+          </div>
+        </div>
+
+        <!-- Tab 4: Upload -->
+        <div class="tab-content" id="tab-content-upload">
+          <div class="form-group">
+            <div class="file-dropzone" id="file-dropzone">
+              <div class="dropzone-icon">📁</div>
+              <p><strong>Click to browse</strong> or drag and drop your Offer Letter</p>
+              <span style="font-size: 0.85rem; color: var(--slate-500);">Supports TXT, PDF, DOCX, JPG, PNG (Auto OCR)</span>
+              <input type="file" id="file-input" accept=".txt,.pdf,.docx,.png,.jpg,.jpeg">
+              <div id="file-selected-info" class="file-selected-text" style="display: none;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scanner Action Bar -->
+        <div style="padding: 0 1.75rem 1.75rem;">
+          <button id="check-btn" class="btn btn-primary btn-block" data-i18n="btn_check">🛡️ Run Fraud Inspection</button>
+          <div class="privacy-badge">
+            <span>🔒 <strong>Privacy Assured:</strong> Automatic client-side masking of Aadhaar, PAN & personal identifiers. Uploads processed in-memory and never permanently stored.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Loading Steps Animation Box -->
+      <div id="loading-box" class="loading-box">
+        <div class="spinner"></div>
+        <div id="loading-step-text" class="loading-step-text">Reading document details...</div>
+        <div style="font-size: 0.85rem; color: var(--slate-500); margin-top: 0.4rem;">Cross-referencing MCA registry, scam templates & cyber syndicate database...</div>
+      </div>
+
+      <!-- Danger Alert Banner -->
+      <div id="danger-banner" class="danger-banner">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <strong>🚨 CRITICAL FRAUD ALERT: High Scam Probability!</strong>
+            <span data-i18n="warning_fee">Payment or sensitive personal credentials demanded. Genuine companies NEVER charge money from job applicants!</span>
+          </div>
+          <button class="btn btn-danger" style="padding: 0.45rem 0.9rem; font-size: 0.85rem;" onclick="switchTool('payment')">Should I Pay?</button>
+        </div>
+      </div>
+
+      <!-- Results Section -->
+      <div id="result-container" class="result-container card">
+        <div class="score-card">
+          <div class="gauge-wrapper">
+            <div id="gauge-circle" class="gauge-circle gauge-safe">
+              <div id="gauge-score" class="gauge-score">85</div>
+              <div class="gauge-sub">Trust Score</div>
+            </div>
+          </div>
+          <div class="score-details">
+            <span id="verdict-badge" class="verdict-badge verdict-safe">Safe / Likely Genuine</span>
+            <span id="ml-pattern-match-badge" class="entity-pill" style="display: none; background: var(--danger-red-bg); border-color: var(--danger-red-border); color: var(--danger-red-text); margin-left: 0.5rem;"></span>
+            <h3 id="score-heading" style="margin-top: 0.4rem; font-size: 1.4rem; color: var(--navy-900);">Job Authenticity & Fraud Risk Assessment</h3>
+            <p id="confidence-text" style="font-size: 0.9rem; color: var(--slate-500); margin-bottom: 0.4rem;">Confidence: High</p>
+            <div id="score-direction-text" style="font-size: 0.8rem; color: var(--slate-500); margin-bottom: 0.8rem;">Higher = Safer (0 = Dangerous Scam, 100 = Likely Genuine)</div>
+            
+            <!-- Extracted Credentials Tag Container -->
+            <div style="margin-top: 0.6rem;">
+              <div style="font-size: 0.8rem; font-weight: 700; color: var(--slate-500); text-transform: uppercase;">Extracted Credential Tags:</div>
+              <div id="entity-chips-container" class="entity-tags-list"></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="padding: 0 2rem 2rem;">
+          <h4 style="font-size: 1.1rem; margin-bottom: 0.75rem; color: var(--navy-900);">🔍 Why this score? (Explainable Factors)</h4>
+          <ul id="reasons-list" class="reasons-list">
+            <!-- Populated by JavaScript -->
+          </ul>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; flex-wrap: wrap; gap: 0.75rem;">
+            <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+              <button id="share-report-card-btn" class="btn btn-primary" style="display: none;">
+                🔗 Share Report Card
+              </button>
+              <button class="btn btn-secondary" onclick="JobShieldCharts.downloadReportCardImage('result-container', 'JobShield_Trust_Report.png')">
+                📸 Download Image (PNG)
+              </button>
+            </div>
+            <a href="/verify.html" class="btn btn-secondary" style="text-decoration: none;">
+              🔍 Deep Forensic Offer Letter Verifier &rarr;
+            </a>
+          </div>
+
+          <div id="disclaimer-text" class="disclaimer-box" style="margin-top: 1.5rem; background: var(--slate-100); border: 1px solid var(--slate-200); padding: 0.85rem 1.25rem; border-radius: 6px; font-size: 0.82rem; color: var(--slate-500);">
+            JobShield provides probabilistic risk assessments based on pattern recognition and community reports. Always independently verify offers via official corporate channels before sharing money or documents.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================================
+         TOOL PANEL 2: SALARY REALITY CHECK
+         ======================================================== -->
+    <div id="tool-panel-salary" class="tool-panel" style="display: none;">
+      <div class="card" style="padding: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 0.5rem;">
+          <div>
+            <span class="hero-pill">💰 INDIAN COMPENSATION INTELLIGENCE</span>
+            <h2 style="font-size: 1.6rem; color: var(--navy-900); margin-top: 0.4rem;">Salary Reality Check</h2>
+            <p style="font-size: 0.92rem; color: var(--slate-500);">
+              Evaluate whether an advertised compensation package aligns with authentic Indian market surveys (NASSCOM / AmbitionBox) across location tiers and experience bands.
+            </p>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-bottom: 1.25rem;">
+          <div class="form-group">
+            <label class="form-label" for="salary-role">Job Role / Designation *</label>
+            <input type="text" id="salary-role" class="form-control" placeholder="e.g. Software Engineer, Data Entry Operator, Sales Executive" list="roles-datalist">
+            <datalist id="roles-datalist">
+              <option value="Software Engineer"></option>
+              <option value="Data Entry Operator"></option>
+              <option value="Customer Support Executive"></option>
+              <option value="Digital Marketing Executive"></option>
+              <option value="Business Development Associate"></option>
+              <option value="Quality Assurance Engineer"></option>
+              <option value="Graphic Designer"></option>
+              <option value="HR Recruiter"></option>
+            </datalist>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="salary-company">Company Name (Optional)</label>
+            <input type="text" id="salary-company" class="form-control" placeholder="e.g. Infosys, TCS, Wipro, Startup">
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.25rem;">
+          <div class="form-group">
+            <label class="form-label" for="salary-city">Location / City Tier</label>
+            <select id="salary-city" class="form-control">
+              <option value="Bengaluru">Tier 1: Bengaluru / Silicon Plateau</option>
+              <option value="Mumbai">Tier 1: Mumbai / Financial Hub</option>
+              <option value="Delhi NCR">Tier 1: Delhi NCR / Gurgaon / Noida</option>
+              <option value="Hyderabad">Tier 1: Hyderabad / Cyberabad</option>
+              <option value="Pune">Tier 1: Pune / IT Hub</option>
+              <option value="Chennai">Tier 1: Chennai</option>
+              <option value="Kolkata">Tier 1: Kolkata</option>
+              <option value="Tier-2 City">Tier 2: Jaipur, Chandigarh, Lucknow, Indore</option>
+              <option value="Remote / Work from Home">Remote / Work from Home</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="salary-exp">Experience Level</label>
+            <select id="salary-exp" class="form-control">
+              <option value="fresher">Fresher (0 - 1 years)</option>
+              <option value="junior">Junior (1 - 3 years)</option>
+              <option value="mid">Mid-Level (3 - 5 years)</option>
+              <option value="senior">Senior (5 - 8 years)</option>
+              <option value="lead">Lead / Architect (8+ years)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="salary-emp-type">Employment Type</label>
+            <select id="salary-emp-type" class="form-control">
+              <option value="full-time">Full-Time Employee</option>
+              <option value="internship">Internship (Stipend)</option>
+              <option value="part-time">Part-Time</option>
+              <option value="contract">Contractor / Consultant</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+          <div class="form-group">
+            <label class="form-label" for="salary-amount">Advertised Salary Amount *</label>
+            <input type="number" id="salary-amount" class="form-control" placeholder="e.g. 50000 (if monthly) or 6.5 (if LPA)">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="salary-period">Period Standard</label>
+            <select id="salary-period" class="form-control">
+              <option value="monthly">₹ INR / Month</option>
+              <option value="annual">₹ LPA (Lakhs Per Annum)</option>
+            </select>
+          </div>
+        </div>
+
+        <button id="salary-check-btn" class="btn btn-primary btn-block">
+          💰 Run Salary Reality Evaluation
+        </button>
+
+        <!-- Loading -->
+        <div id="salary-loading" style="display: none; text-align: center; padding: 2rem;">
+          <div class="spinner" style="margin: 0 auto 0.75rem;"></div>
+          <div style="font-size: 0.9rem; color: var(--navy-800);">Evaluating against Indian compensation survey baselines...</div>
+        </div>
+
+        <!-- Result Box -->
+        <div id="salary-result-box" class="benchmark-card" style="display: none;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem;">
+            <span id="salary-verdict-badge" class="salary-ratio-badge ratio-normal">Realistic</span>
+            <div id="salary-verdict-text" style="font-weight: 700; color: var(--navy-900);">Evaluation Complete</div>
+          </div>
+          <p id="salary-explanation-text" style="font-size: 0.95rem; color: var(--navy-800); line-height: 1.55; margin-bottom: 1rem;">
+            Explanation details
+          </p>
+
+          <div id="salary-stats-grid" class="benchmark-stats-grid">
+            <!-- Populated via JS -->
+          </div>
+
+          <div id="salary-citations-text" class="citations-box">
+            Data Sources: Indian IT & Business Services Compensation Survey (NASSCOM / AmbitionBox)
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ========================================================
+         TOOL PANEL 3: RECRUITER DOMAIN & EMAIL CHECKER
+         ======================================================== -->
+    <div id="tool-panel-domain" class="tool-panel" style="display: none;">
+      <div class="card" style="padding: 2rem;">
+        <span class="hero-pill">🌐 CORPORATE DOMAIN & TYPOSQUATTING DEFENSE</span>
+        <h2 style="font-size: 1.6rem; color: var(--navy-900); margin: 0.4rem 0;">Recruiter Domain Mismatch Checker</h2>
+        <p style="font-size: 0.92rem; color: var(--slate-500); margin-bottom: 1.5rem;">
+          Cross-check recruiter contact details against official Ministry of Corporate Affairs (MCA) records. Detect free webmail impostors, brand typosquatting, disposable TLDs, and unsafe portals with SSRF protection.
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1.25rem;">
+          <div class="form-group">
+            <label class="form-label" for="domain-input-email">Recruiter Email or Domain *</label>
+            <input type="text" id="domain-input-email" class="form-control" placeholder="e.g. hr.tcsrecruitment@gmail.com or careers@inf0sys-jobs.in">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="domain-input-company">Claimed Employer / Brand Name</label>
+            <input type="text" id="domain-input-company" class="form-control" placeholder="e.g. Tata Consultancy Services, Infosys, Wipro, Amazon">
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 1.5rem;">
+          <label class="form-label" for="domain-input-url">Recruitment Portal / Application URL (Optional)</label>
+          <input type="url" id="domain-input-url" class="form-control" placeholder="e.g. https://tcs-recruitment-portal.xyz or https://careers.infosys.com">
+        </div>
+
+        <button id="domain-check-btn" class="btn btn-primary btn-block">
+          🌐 Run Domain Mismatch Inspection
+        </button>
+
+        <!-- Loading -->
+        <div id="domain-loading" style="display: none; text-align: center; padding: 2rem;">
+          <div class="spinner" style="margin: 0 auto 0.75rem;"></div>
+          <div style="font-size: 0.9rem; color: var(--navy-800);">Querying DNS records, RDAP registry, and corporate domain baselines...</div>
+        </div>
+
+        <!-- Result Box -->
+        <div id="domain-result-box" class="benchmark-card" style="display: none;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+            <span id="domain-verdict-badge" class="verdict-badge verdict-safe">Domain Verified</span>
+          </div>
+
+          <div id="domain-details-box">
+            <!-- Chips -->
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; margin-top: 1.25rem;">
+            <div style="background: var(--danger-red-bg); border: 1px solid var(--danger-red-border); padding: 1rem; border-radius: var(--radius-sm);">
+              <h5 style="color: var(--danger-red-text); margin-bottom: 0.5rem;">🚨 Warning Signs & Threat Indicators</h5>
+              <ul id="domain-warnings-list" style="margin: 0; padding-left: 1.2rem; font-size: 0.86rem; color: var(--navy-800); line-height: 1.5;"></ul>
+            </div>
+            <div style="background: var(--safe-green-bg); border: 1px solid var(--safe-green-border); padding: 1rem; border-radius: var(--radius-sm);">
+              <h5 style="color: var(--safe-green-text); margin-bottom: 0.5rem;">✅ Verified Authentic Signals</h5>
+              <ul id="domain-verified-list" style="margin: 0; padding-left: 1.2rem; font-size: 0.86rem; color: var(--navy-800); line-height: 1.5;"></ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ========================================================
+         TOOL PANEL 4: PAYMENT & PERSONAL DATA ADVISOR ("Should I Pay?")
+         ======================================================== -->
+    <div id="tool-panel-payment" class="tool-panel" style="display: none;">
+      <div class="card" style="padding: 2rem;">
+        <span class="hero-pill">💳 RED-FLAG PAYMENT & DATA SHARING ADVISOR</span>
+        <h2 style="font-size: 1.6rem; color: var(--navy-900); margin: 0.4rem 0;">Should I Pay or Share this Information?</h2>
+        <p style="font-size: 0.92rem; color: var(--slate-500); margin-bottom: 1.25rem;">
+          Instant decision engine: Evaluate whether a recruiter's request for security deposits, equipment purchases, Aadhaar/PAN, or bank OTPs violates Indian labor standards.
+        </p>
+
+        <!-- Quick 1-click payment scenarios -->
+        <div class="quick-presets-box" style="margin-bottom: 1.25rem;">
+          <span class="presets-label">⚡ Test Common Payment Demands:</span>
+          <button class="preset-chip" onclick="loadPaymentPreset('laptop')">🔴 Laptop Security Deposit (₹2,999)</button>
+          <button class="preset-chip" onclick="loadPaymentPreset('otp')">🚨 Salary Account Bank OTP</button>
+          <button class="preset-chip" onclick="loadPaymentPreset('pan')">🟠 Unmasked Aadhaar & PAN KYC</button>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="payment-advisor-text">Paste message, email, or WhatsApp text asking for payment or documents:</label>
+          <textarea id="payment-advisor-text" class="form-control" style="min-height: 110px;" placeholder="e.g. Deposit refundable laptop courier fee of Rs 2,500 to UPI ID: hr.support@icici, or share OTP sent to your mobile..."></textarea>
+        </div>
+
+        <button id="payment-advisor-btn" class="btn btn-primary btn-block">
+          💳 Evaluate Payment & Credential Safety
+        </button>
+
+        <!-- Loading -->
+        <div id="payment-loading" style="display: none; text-align: center; padding: 2rem;">
+          <div class="spinner" style="margin: 0 auto 0.75rem;"></div>
+          <div style="font-size: 0.9rem; color: var(--navy-800);">Inspecting monetary demands, UPI triggers, and PII sensitivity...</div>
+        </div>
+
+        <!-- Result Box -->
+        <div id="payment-result-box" class="benchmark-card" style="display: none;">
+          
+          <!-- Critical OTP Alert -->
+          <div id="payment-otp-critical-alert" class="otp-danger-alert" style="display: none;">
+            <div style="font-size: 2rem;">🚨</div>
+            <div>
+              <strong style="font-size: 1.1rem; display: block;">CRITICAL ALERT: Never Share Passwords, PINs, or Bank OTPs!</strong>
+              <span>Recruiters NEVER need your OTP to deposit salary or activate accounts. This is an active financial theft attempt.</span>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
+            <span id="payment-verdict-badge" class="verdict-badge verdict-scam">DO NOT PAY</span>
+            <div id="payment-verdict-title" style="font-size: 1.15rem; font-weight: 800; color: var(--navy-900);">Evaluation Complete</div>
+          </div>
+
+          <p id="payment-primary-advice" style="font-size: 1rem; color: var(--navy-800); font-weight: 600; line-height: 1.5; margin-bottom: 1.25rem;">
+            Primary advice
+          </p>
+
+          <h5 style="color: var(--navy-900); margin-bottom: 0.6rem;">Detected Red Flags & Safer Alternatives</h5>
+          <div id="payment-red-flags-container">
+            <!-- Populated via JS -->
+          </div>
+
+          <h5 style="color: var(--navy-900); margin: 1.25rem 0 0.5rem;">Recommended Safe Action Checklist</h5>
+          <ul id="payment-checklist" class="action-checklist">
+            <!-- Checklist -->
+          </ul>
+
+          <div style="margin-top: 1rem; background: var(--slate-100); padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--slate-200);">
+            <div style="font-size: 0.75rem; font-weight: 800; color: var(--slate-500); text-transform: uppercase;">Privacy Protected Input (Client-Side Masked):</div>
+            <pre id="payment-masked-content" style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--navy-800); margin-top: 0.35rem; white-space: pre-wrap; word-break: break-all;"></pre>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ========================================================
+         TOOL PANEL 5: SCAM SYNDICATE INDICATOR INTELLIGENCE
+         ======================================================== -->
+    <div id="tool-panel-indicator" class="tool-panel" style="display: none;">
+      <div class="card" style="padding: 2rem;">
+        <span class="hero-pill">🔎 CYBERCRIME SYNDICATE TELEMETRY</span>
+        <h2 style="font-size: 1.6rem; color: var(--navy-900); margin: 0.4rem 0;">Search Threat Indicator Intelligence</h2>
+        <p style="font-size: 0.92rem; color: var(--slate-500); margin-bottom: 1.25rem;">
+          Search any recruiter phone number, UPI handle, corporate domain, or fake company name across all corroborated community reports and detected syndicate networks.
+        </p>
+
+        <!-- Quick Search Chips -->
+        <div class="quick-presets-box" style="margin-bottom: 1.25rem;">
+          <span class="presets-label">⚡ Known Syndicate Hubs:</span>
+          <button class="preset-chip" onclick="quickSearchIndicator('+91 98765 43210')">📞 +91 98765 43210</button>
+          <button class="preset-chip" onclick="quickSearchIndicator('hr.tcslogistics@icici')">💳 hr.tcslogistics@icici</button>
+          <button class="preset-chip" onclick="quickSearchIndicator('tcs-hiring-portal.online')">🌐 tcs-hiring-portal.online</button>
+        </div>
+
+        <div style="display: flex; gap: 0.75rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
+          <input type="text" id="indicator-search-input" class="form-control" style="flex: 1; min-width: 250px;" placeholder="Enter Phone (+91 98...), UPI ID (name@icici), Domain, or Company Name">
+          <button id="indicator-search-btn" class="btn btn-primary" style="padding: 0.75rem 1.75rem;">
+            🔎 Search Indicator
+          </button>
+        </div>
+
+        <!-- Loading -->
+        <div id="indicator-loading" style="display: none; text-align: center; padding: 2rem;">
+          <div class="spinner" style="margin: 0 auto 0.75rem;"></div>
+          <div style="font-size: 0.9rem; color: var(--navy-800);">Traversing scam syndicate graph and aggregating corroborating records...</div>
+        </div>
+
+        <!-- Result Box -->
+        <div id="indicator-result-box" class="benchmark-card" style="display: none;">
+          <div id="indicator-header"></div>
+          <div id="indicator-stats-grid" class="benchmark-stats-grid"></div>
+          <div id="indicator-associated-box" style="margin: 1.25rem 0;"></div>
+          <h5 style="color: var(--navy-900); margin-bottom: 0.6rem;">Corroborating Community Reports (Masked PII)</h5>
+          <div id="indicator-reports-list"></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Live Platform Statistics -->
+    <section class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number" id="stat-companies-count">30+</div>
+        <div class="stat-label">Verified MCA Companies & Corporate Domains</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="stat-total-reports">50+</div>
+        <div class="stat-label">Active Scam Reports Cross-Referenced</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="stat-prevented-amount">₹4.2L+</div>
+        <div class="stat-label">Potential Candidate Financial Loss Prevented</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Free & Independent Community Cyber Defense</div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+      <h3 class="section-title">How JobShield Protects You</h3>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <h4>Input Offer Details</h4>
+          <p>Paste the recruiter's message, WhatsApp chat, email, website URL, or upload the offer letter document.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <h4>Multimodal Fraud Inspection</h4>
+          <p>Our engine cross-checks official MCA registries, corporate email domains, UPI payment handles, and AI scam patterns.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <h4>Explainable Score & Action</h4>
+          <p>Receive an explainable Trust Score (0-100), transparent red flag reasons, salary reality check, and a 1-click cyber complaint draft.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p><strong>JobShield</strong> – "Scam hone se pehle pakdo" | National Cyber Helpline: <strong>1930</strong> | National Cyber Crime Reporting Portal: <a href="https://cybercrime.gov.in" target="_blank" style="color: var(--accent-blue);">cybercrime.gov.in</a></p>
+    <div class="footer-links">
+      <a href="/verify.html">Forensic Verifier</a>
+      <a href="/learn.html">Student Awareness & Quiz</a>
+      <a href="/help.html">Victim Help (1930)</a>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="/js/i18n.js"></script>
+  <script src="/js/charts.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>

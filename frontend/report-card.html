@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JobShield – Shareable Trust Report Card</title>
+    <link rel="icon" type="image/png" href="/images/logo.png">
+  <link rel="apple-touch-icon" href="/images/logo.png">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <!-- Top Emergency Bar -->
+  <div class="emergency-top-bar">
+    <div class="top-bar-left">
+      <span class="live-pulse-dot"></span>
+      <span><strong>JobShield Threat Telemetry:</strong> Public Cyber Safety & Job Offer Audit</span>
+    </div>
+    <div class="top-bar-right">
+      <span>Helpline: <strong>1930</strong></span>
+      <a href="/help.html">Victim Emergency Protocol &rarr;</a>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <a href="/" class="brand">
+      <div class="brand-icon"><img src="/images/logo.png" alt="JobShield Logo" width="44" height="44" loading="eager"></div>
+      <div class="brand-title-wrap">
+        <span class="brand-title">JobShield</span>
+        <span class="brand-tagline-badge">Verified Trust Report</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/" class="nav-link">Home Scanner</a></li>
+      <li><a href="/verify.html" class="nav-link">Verify Letter</a></li>
+      <li><a href="/help.html" class="nav-link">Victim Help (1930)</a></li>
+      <li>
+        <button id="theme-toggle-btn" class="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle Theme">
+          <span id="theme-icon">🌙</span> <span id="theme-text">Dark</span>
+        </button>
+      </li>
+    </ul>
+  </header>
+
+  <main class="container" style="max-width: 960px;">
+    
+    <!-- Header Banner -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;" class="no-print">
+      <div>
+        <span class="hero-pill">🛡️ OFFICIAL AUDIT REPORT CARD</span>
+        <h1 style="font-size: 1.8rem; margin-top: 0.5rem; color: var(--navy-900);">Job Offer Safety Assessment</h1>
+      </div>
+      <div style="display: flex; gap: 0.75rem;">
+        <button class="btn btn-secondary" onclick="copyShareableLink()">
+          🔗 Copy Link
+        </button>
+        <button class="btn btn-primary" onclick="window.print()">
+          🖨️ Print / PDF
+        </button>
+      </div>
+    </div>
+
+    <!-- Loading State -->
+    <div id="card-loading" class="card" style="padding: 3rem; text-align: center;">
+      <div class="spinner" style="margin: 0 auto 1rem;"></div>
+      <div style="font-size: 1.1rem; font-weight: 700; color: var(--navy-800);">Loading Verified Report Card...</div>
+      <p style="color: var(--slate-500); margin-top: 0.5rem;">Retrieving cryptographic scan record from JobShield database...</p>
+    </div>
+
+    <!-- Error State -->
+    <div id="card-error" class="card" style="padding: 2.5rem; display: none; text-align: center;">
+      <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">⚠️</div>
+      <h3 style="color: var(--danger-red); margin-bottom: 0.5rem;">Report Card Not Found</h3>
+      <p style="color: var(--slate-500); max-width: 500px; margin: 0 auto 1.5rem;">
+        This scan reference ID does not exist or may have expired. You can run a fresh inspection anytime.
+      </p>
+      <a href="/" class="btn btn-primary">Run New Job Inspection &rarr;</a>
+    </div>
+
+    <!-- Active Report Card -->
+    <div id="card-content" class="card report-card-container" style="display: none; padding: 2.5rem;">
+      
+      <!-- Meta Header -->
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid var(--slate-200); padding-bottom: 1.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <div style="font-size: 0.75rem; font-weight: 800; color: var(--slate-500); text-transform: uppercase; letter-spacing: 0.5px;">Reference Identifier</div>
+          <div id="report-id" style="font-family: var(--font-mono); font-size: 1.2rem; font-weight: 800; color: var(--accent-blue);">JS-SCAN-0000</div>
+          <div id="report-date" style="font-size: 0.82rem; color: var(--slate-500); margin-top: 0.25rem;">Generated on: --</div>
+        </div>
+        <div style="text-align: right;">
+          <div style="font-size: 0.75rem; font-weight: 800; color: var(--slate-500); text-transform: uppercase; letter-spacing: 0.5px;">Target Entity</div>
+          <div id="report-company" style="font-size: 1.15rem; font-weight: 800; color: var(--navy-900);">Company Name</div>
+          <div id="report-confidence" style="font-size: 0.82rem; color: var(--slate-500);">Confidence: High</div>
+        </div>
+      </div>
+
+      <!-- Trust Score & Verdict Banner -->
+      <div style="display: grid; grid-template-columns: auto 1fr; gap: 2rem; align-items: center; margin-bottom: 2rem; background: var(--slate-100); padding: 1.75rem; border-radius: var(--radius-md); border: 1px solid var(--slate-200);">
+        <div class="gauge-wrapper" style="margin: 0;">
+          <div id="report-gauge" class="gauge-circle gauge-safe" style="width: 110px; height: 110px;">
+            <div id="report-score" class="gauge-score" style="font-size: 2.2rem;">85</div>
+            <div class="gauge-sub" style="font-size: 0.65rem;">Trust Score</div>
+          </div>
+        </div>
+        <div>
+          <span id="report-verdict-badge" class="verdict-badge verdict-safe">Safe / Likely Genuine</span>
+          <h2 id="report-verdict-title" style="margin: 0.4rem 0 0.3rem; font-size: 1.35rem; color: var(--navy-900);">Evaluation Complete</h2>
+          <p id="report-summary" style="color: var(--slate-500); font-size: 0.92rem; line-height: 1.5; margin: 0;">
+            Summary text
+          </p>
+          <div style="margin-top: 0.6rem; font-size: 0.78rem; color: var(--slate-500);">
+            <em>Score Direction: 100 = Authenticated / Zero Risk, 0 = Active Malicious Scam</em>
+          </div>
+        </div>
+      </div>
+
+      <!-- Two-Column Findings Breakdown -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+        
+        <!-- Warning Signs -->
+        <div style="border: 1px solid var(--danger-red-border); background: var(--danger-red-bg); padding: 1.25rem; border-radius: var(--radius-md);">
+          <h4 style="color: var(--danger-red-text); font-size: 0.95rem; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.45rem;">
+            🚨 Warning Signs & Threat Indicators
+          </h4>
+          <ul id="warning-signs-list" style="margin: 0; padding-left: 1.2rem; font-size: 0.88rem; color: var(--navy-800); line-height: 1.5;">
+            <!-- Populated via JS -->
+          </ul>
+        </div>
+
+        <!-- Positive Indicators -->
+        <div style="border: 1px solid var(--safe-green-border); background: var(--safe-green-bg); padding: 1.25rem; border-radius: var(--radius-md);">
+          <h4 style="color: var(--safe-green-text); font-size: 0.95rem; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.45rem;">
+            ✅ Positive Verification Signals
+          </h4>
+          <ul id="positive-signs-list" style="margin: 0; padding-left: 1.2rem; font-size: 0.88rem; color: var(--navy-800); line-height: 1.5;">
+            <!-- Populated via JS -->
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Extracted Indicators (Sanitized) -->
+      <div style="margin-bottom: 2rem;">
+        <h4 style="font-size: 0.9rem; font-weight: 800; color: var(--slate-500); text-transform: uppercase; margin-bottom: 0.6rem;">
+          Sanitized Credential Telemetry (Masked PII)
+        </h4>
+        <div id="indicators-chips" style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+          <!-- Chips -->
+        </div>
+      </div>
+
+      <!-- Recommended Next Steps -->
+      <div style="margin-bottom: 2rem;">
+        <h4 style="font-size: 1.05rem; margin-bottom: 0.75rem; color: var(--navy-900);">
+          📋 Recommended Next Steps
+        </h4>
+        <ul id="next-steps-list" class="action-checklist">
+          <!-- Steps -->
+        </ul>
+      </div>
+
+      <!-- Emergency Victim Assistance -->
+      <div style="background: var(--slate-100); border: 1px solid var(--slate-200); border-radius: var(--radius-md); padding: 1.5rem;">
+        <h4 style="margin-bottom: 0.5rem; color: var(--navy-900); font-size: 1.05rem;">
+          🚨 Indian Cybercrime & Victim Emergency Resources
+        </h4>
+        <p style="font-size: 0.88rem; color: var(--slate-500); margin-bottom: 1rem;">
+          If you have been asked to pay money or already suffered financial loss, act within the <strong>Golden Hour (first 2 hours)</strong> to maximize recovery chances.
+        </p>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="tel:1930" class="btn btn-danger" style="text-decoration: none;">
+            📞 Call Cyber Helpline 1930
+          </a>
+          <a href="https://cybercrime.gov.in" target="_blank" class="btn btn-secondary" style="text-decoration: none;">
+            🌐 Visit cybercrime.gov.in &rarr;
+          </a>
+          <a href="/help.html" class="btn btn-secondary" style="text-decoration: none;">
+            📝 1-Click Complaint & Bank Freeze Draft
+          </a>
+        </div>
+      </div>
+
+      <!-- Footer Disclaimer -->
+      <div style="margin-top: 1.5rem; font-size: 0.78rem; color: var(--slate-500); text-align: center; border-top: 1px solid var(--slate-200); padding-top: 1rem;">
+        JobShield is an independent Indian public-interest cyber fraud intelligence tool. Assessments are probabilistic risk models based on verified MCA corporate records, domain heuristics, and community telemetry. Never pay upfront fees for employment.
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer class="footer no-print">
+    <p><strong>JobShield</strong> – "Scam hone se pehle pakdo" | National Cyber Helpline: <strong>1930</strong></p>
+  </footer>
+
+  <script>
+    // Theme Management
+    function initTheme() {
+      const savedTheme = localStorage.getItem("jobshield_theme") || "dark";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+      updateThemeButton(savedTheme);
+    }
+
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute("data-theme") || "dark";
+      const next = current === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      localStorage.setItem("jobshield_theme", next);
+      updateThemeButton(next);
+    }
+
+    function updateThemeButton(theme) {
+      const icon = document.getElementById("theme-icon");
+      const text = document.getElementById("theme-text");
+      if (theme === "dark") {
+        if (icon) icon.textContent = "🌙";
+        if (text) text.textContent = "Dark";
+      } else {
+        if (icon) icon.textContent = "☀️";
+        if (text) text.textContent = "Light";
+      }
+    }
+
+    // Copy Link to Clipboard
+    function copyShareableLink() {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        showToast("Report Card link copied to clipboard!");
+      }).catch(() => {
+        prompt("Copy this shareable report card URL:", window.location.href);
+      });
+    }
+
+    function showToast(msg) {
+      const toast = document.createElement("div");
+      toast.className = "jobshield-toast";
+      toast.innerHTML = `<span>🛡️</span> <span>${msg}</span>`;
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 3200);
+    }
+
+    function escapeHtml(text) {
+      if (!text) return "";
+      return String(text)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    // Load Report Card Data on Page Load
+    document.addEventListener("DOMContentLoaded", async () => {
+      initTheme();
+
+      const params = new URLSearchParams(window.location.search);
+      const scanId = params.get("id");
+
+      const loadingElem = document.getElementById("card-loading");
+      const errorElem = document.getElementById("card-error");
+      const contentElem = document.getElementById("card-content");
+
+      if (!scanId) {
+        if (loadingElem) loadingElem.style.display = "none";
+        if (errorElem) errorElem.style.display = "block";
+        return;
+      }
+
+      try {
+        const res = await fetch(`/api/report-card/${encodeURIComponent(scanId)}`);
+        if (!res.ok) {
+          if (loadingElem) loadingElem.style.display = "none";
+          if (errorElem) errorElem.style.display = "block";
+          return;
+        }
+
+        const data = await res.json();
+        renderReportCard(data);
+
+        if (loadingElem) loadingElem.style.display = "none";
+        if (contentElem) contentElem.style.display = "block";
+      } catch (err) {
+        console.error("Failed to load report card:", err);
+        if (loadingElem) loadingElem.style.display = "none";
+        if (errorElem) errorElem.style.display = "block";
+      }
+    });
+
+    function renderReportCard(report) {
+      document.getElementById("report-id").textContent = report.id || "JS-SCAN";
+      document.getElementById("report-date").textContent = `Generated: ${report.created_at ? new Date(report.created_at).toLocaleString() : new Date().toLocaleString()}`;
+      document.getElementById("report-company").textContent = report.company_name || "Unspecified Entity";
+      document.getElementById("report-confidence").textContent = `Confidence: ${report.confidence || "High"}`;
+
+      const score = report.trust_score || 0;
+      document.getElementById("report-score").textContent = score;
+
+      const gauge = document.getElementById("report-gauge");
+      const badge = document.getElementById("report-verdict-badge");
+      gauge.className = "gauge-circle";
+      badge.className = "verdict-badge";
+
+      if (score >= 70) {
+        gauge.classList.add("gauge-safe");
+        badge.classList.add("verdict-safe");
+      } else if (score >= 40) {
+        gauge.classList.add("gauge-suspicious");
+        badge.classList.add("verdict-suspicious");
+      } else {
+        gauge.classList.add("gauge-scam");
+        badge.classList.add("verdict-scam");
+      }
+
+      badge.textContent = report.verdict || "Assessment Complete";
+      document.getElementById("report-verdict-title").textContent = report.risk_category || (score >= 70 ? "Safe / Low Risk" : (score >= 40 ? "Needs Verification" : "High Scam Risk"));
+      document.getElementById("report-summary").textContent = report.summary || "Multimodal fraud analysis completed across official databases and scam templates.";
+
+      // Warnings
+      const warningsList = document.getElementById("warning-signs-list");
+      warningsList.innerHTML = "";
+      const warnings = report.warning_signs && report.warning_signs.length ? report.warning_signs : ["No explicit threat patterns or red-flag fee demands observed."];
+      warnings.forEach(w => {
+        const li = document.createElement("li");
+        li.textContent = w;
+        warningsList.appendChild(li);
+      });
+
+      // Positive
+      const posList = document.getElementById("positive-signs-list");
+      posList.innerHTML = "";
+      const positives = report.positive_indicators && report.positive_indicators.length ? report.positive_indicators : ["Subject to standard employment verification."];
+      positives.forEach(p => {
+        const li = document.createElement("li");
+        li.textContent = p;
+        posList.appendChild(li);
+      });
+
+      // Indicators Chips
+      const chipsContainer = document.getElementById("indicators-chips");
+      chipsContainer.innerHTML = "";
+      const ind = report.indicators || {};
+      let hasIndicators = false;
+
+      (ind.phones || []).forEach(p => {
+        hasIndicators = true;
+        chipsContainer.innerHTML += `<span class="domain-audit-pill" style="background: var(--slate-100); border: 1px solid var(--slate-200); color: var(--navy-800);">📞 ${escapeHtml(p)}</span>`;
+      });
+      (ind.emails || []).forEach(e => {
+        hasIndicators = true;
+        chipsContainer.innerHTML += `<span class="domain-audit-pill" style="background: var(--slate-100); border: 1px solid var(--slate-200); color: var(--navy-800);">✉️ ${escapeHtml(e)}</span>`;
+      });
+      (ind.upis || []).forEach(u => {
+        hasIndicators = true;
+        chipsContainer.innerHTML += `<span class="domain-audit-pill" style="background: var(--danger-red-bg); border: 1px solid var(--danger-red-border); color: var(--danger-red-text);">💳 UPI: ${escapeHtml(u)}</span>`;
+      });
+      (ind.domains || []).forEach(d => {
+        hasIndicators = true;
+        chipsContainer.innerHTML += `<span class="domain-audit-pill" style="background: var(--accent-blue-subtle); border: 1px solid var(--accent-blue-border); color: var(--accent-blue);">🌐 ${escapeHtml(d)}</span>`;
+      });
+
+      if (!hasIndicators) {
+        chipsContainer.innerHTML = `<span style="font-size: 0.85rem; color: var(--slate-500);">No external contact indicators logged in this scan.</span>`;
+      }
+
+      // Next Steps
+      const stepsList = document.getElementById("next-steps-list");
+      stepsList.innerHTML = "";
+      const steps = report.recommended_steps && report.recommended_steps.length ? report.recommended_steps : [
+        "Never transfer any security deposit, laptop courier fee, or training charge.",
+        "Apply exclusively through the verified company career portal.",
+        "Verify recruiter credentials on LinkedIn or official corporate switchboard."
+      ];
+      steps.forEach(s => {
+        const li = document.createElement("li");
+        li.innerHTML = `<span>🛡️</span> <span>${escapeHtml(s)}</span>`;
+        stepsList.appendChild(li);
+      });
+    }
+  </script>
+  <script src="/js/app.js"></script>
+</body>
+</html>

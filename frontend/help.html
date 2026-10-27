@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Victim Emergency Protocol & Complaint Generator – JobShield</title>
+    <link rel="icon" type="image/png" href="/images/logo.png">
+  <link rel="apple-touch-icon" href="/images/logo.png">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Emergency Top Bar -->
+  <div class="emergency-top-bar" style="background: #7f1d1d; border-bottom: 1px solid #b91c1c;">
+    <div class="top-bar-left">
+      <span class="live-pulse-dot" style="background: #ef4444;"></span>
+      <span><strong>🚨 NATIONAL CYBERCRIME HELPLINE: 1930</strong> • Citizen Financial Cyber Fraud Reporting System</span>
+    </div>
+    <div class="top-bar-right">
+      <span>Official Portal: <a href="https://cybercrime.gov.in" target="_blank" style="color: #fef08a;">cybercrime.gov.in</a></span>
+    </div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <a href="/" class="brand">
+      <div class="brand-icon"><img src="/images/logo.png" alt="JobShield Logo" width="44" height="44" loading="eager"></div>
+      <div class="brand-title-wrap">
+        <span class="brand-title">JobShield</span>
+        <span class="brand-tagline-badge">Victim Emergency Desk</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/" class="nav-link">Home Scanner</a></li>
+      <li><a href="/verify.html" class="nav-link">Verify Letter</a></li>
+      <li><a href="/learn.html" class="nav-link">Learn & Quiz</a></li>
+      <li><a href="/help.html" class="nav-link active">Victim Help (1930)</a></li>
+      <li>
+        <button id="theme-toggle-btn" class="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle Theme">
+          <span id="theme-icon">🌙</span> <span id="theme-text">Dark</span>
+        </button>
+      </li>
+    </ul>
+  </header>
+
+  <main class="container">
+    <div class="hero" style="margin-bottom: 2rem;">
+      <div class="hero-pill" style="background: var(--danger-red-bg); border-color: var(--danger-red-border); color: var(--danger-red-text);">
+        🆘 Emergency Response & Complaint Automation
+      </div>
+      <h1>Scammed by a Fake Recruiter? <span>Don't Panic</span></h1>
+      <p>
+        Take immediate action within the "Golden Hour". Follow our emergency freezing protocol and generate ready-to-file legal complaint drafts for the National Cyber Crime Reporting Portal and your bank.
+      </p>
+    </div>
+
+    <!-- Golden Hour Flowchart Steps -->
+    <div class="card" style="padding: 2rem; margin-bottom: 2.5rem; border-top: 5px solid var(--danger-red);">
+      <h3 style="font-size: 1.35rem; color: var(--navy-900); margin-bottom: 0.5rem;">🚨 The "Golden Hour" 4-Step Recovery Protocol</h3>
+      <p style="font-size: 0.9rem; color: var(--slate-500); margin-bottom: 1.5rem;">Action taken within the first 2 hours yields the highest probability of fund recovery:</p>
+
+      <div class="steps-grid">
+        <div class="step-card" style="border-left: 4px solid var(--danger-red);">
+          <div class="step-num" style="background: var(--danger-red-bg); color: var(--danger-red-text); border-color: var(--danger-red-border);">1</div>
+          <h4>Dial 1930 Immediately</h4>
+          <p>Call National Cyber Helpline <strong>1930</strong>. Provide your transaction UTR, debit bank name, and suspect UPI ID to initiate a quick account freeze.</p>
+        </div>
+
+        <div class="step-card" style="border-left: 4px solid var(--warn-amber);">
+          <div class="step-num" style="background: var(--warn-amber-bg); color: var(--warn-amber-text); border-color: var(--warn-amber-border);">2</div>
+          <h4>Notify Bank Fraud Desk</h4>
+          <p>Email your bank's Nodal Officer with the formal freeze notice below to place an immediate lien on the beneficiary account under RBI Master Directions.</p>
+        </div>
+
+        <div class="step-card" style="border-left: 4px solid var(--accent-blue);">
+          <div class="step-num" style="background: var(--accent-blue-subtle); color: var(--accent-blue); border-color: var(--accent-blue-border);">3</div>
+          <h4>File on cybercrime.gov.in</h4>
+          <p>Copy the automated legal draft below and paste it into the official complaint portal at <strong>cybercrime.gov.in</strong> under Financial Job Fraud.</p>
+        </div>
+
+        <div class="step-card" style="border-left: 4px solid var(--safe-green);">
+          <div class="step-num" style="background: var(--safe-green-bg); color: var(--safe-green-text); border-color: var(--safe-green-border);">4</div>
+          <h4>Preserve Chat Evidence</h4>
+          <p>Export complete WhatsApp / Telegram chats as .txt, take screenshots of payment screens, and do NOT delete messages or block suspects yet.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Automated Cybercrime Complaint Draft Generator -->
+    <div class="card" style="padding: 2rem;">
+      <h3 style="font-size: 1.35rem; color: var(--navy-900); margin-bottom: 0.5rem;">📝 Automated Cybercrime Complaint Generator</h3>
+      <p style="font-size: 0.9rem; color: var(--slate-500); margin-bottom: 1.75rem;">
+        Fill in your incident details to generate official, formatted legal complaint drafts for the Cybercrime Portal and your Bank:
+      </p>
+
+      <form id="complaint-generator-form" onsubmit="handleGenerateComplaint(event)">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
+          <div class="form-group">
+            <label class="form-label" for="comp-name">Your Full Name *</label>
+            <input type="text" id="comp-name" class="form-control" placeholder="e.g. Rahul Sharma" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="comp-phone">Your Mobile Number *</label>
+            <input type="tel" id="comp-phone" class="form-control" placeholder="e.g. +91 98765 12345" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="comp-city">Your City / State *</label>
+            <input type="text" id="comp-city" class="form-control" placeholder="e.g. Bengaluru, Karnataka" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="comp-suspect-comp">Company Impersonated by Scammer</label>
+            <input type="text" id="comp-suspect-comp" class="form-control" placeholder="e.g. Tata Consultancy Services HR Hub">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="comp-suspect-name">Scammer's Name / Alias</label>
+            <input type="text" id="comp-suspect-name" class="form-control" placeholder="e.g. Mr. Rajesh Kumar (HR Manager)">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="comp-suspect-phone">Scammer's Phone / WhatsApp Number</label>
+            <input type="text" id="comp-suspect-phone" class="form-control" placeholder="e.g. +91 98765 43210">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="comp-suspect-email">Scammer's Email Address</label>
+            <input type="email" id="comp-suspect-email" class="form-control" placeholder="e.g. hr.tcsrecruitment@gmail.com">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="comp-suspect-upi">Scammer's UPI Handle / VPA</label>
+            <input type="text" id="comp-suspect-upi" class="form-control" placeholder="e.g. hr.tcslogistics@icici">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="comp-amount">Amount Lost (INR) *</label>
+            <input type="number" id="comp-amount" class="form-control" placeholder="e.g. 2999" required min="1">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="comp-utr">Bank UTR / Transaction Reference No. *</label>
+            <input type="text" id="comp-utr" class="form-control" placeholder="e.g. 405621894231" required>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top: 0.5rem;">
+          <label class="form-label" for="comp-narrative">Brief Narrative of the Scam *</label>
+          <textarea id="comp-narrative" class="form-control" style="min-height: 90px;" placeholder="e.g. Recruiter sent fake appointment letter via WhatsApp and demanded Rs 2,999 refundable courier deposit for MacBook delivery. Promised refund on joining day, but blocked me after payment." required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" style="padding: 0.95rem; font-size: 1.05rem;">
+          ⚡ Generate Official Police & Bank Complaint Drafts
+        </button>
+      </form>
+
+      <!-- Complaint Output Section -->
+      <div id="complaint-output-section" style="display: none; margin-top: 2.5rem;">
+
+        <!-- Emergency Action Checklist -->
+        <div id="complaint-checklist-section" style="background: #fef2f2; border: 1.5px solid #fca5a5; border-radius: 8px; padding: 1.25rem 1.5rem; margin-bottom: 1.75rem;">
+          <h4 style="margin: 0 0 0.75rem; color: #991b1b; font-size: 1rem;">🚨 Your Golden-Hour Action Plan</h4>
+          <ol id="complaint-checklist" style="margin: 0; padding-left: 1.25rem; font-size: 0.88rem; color: #7f1d1d; line-height: 1.75;"></ol>
+        </div>
+
+        <!-- Subject Lines for Email Copy -->
+        <div id="complaint-subjects-section" style="margin-bottom: 1.5rem; display: grid; gap: 0.75rem;">
+          <div style="background: var(--slate-100); border: 1px solid var(--slate-200); border-radius: 6px; padding: 0.75rem 1rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem;">
+            <div>
+              <div style="font-size: 0.75rem; font-weight: 600; color: var(--slate-500); text-transform: uppercase; letter-spacing: 0.05em;">Portal Complaint Subject</div>
+              <div id="subject-portal-text" style="font-size: 0.85rem; font-family: var(--font-mono); color: var(--navy-800); margin-top: 0.2rem;"></div>
+            </div>
+            <button class="btn btn-secondary" style="padding: 0.35rem 0.75rem; font-size: 0.8rem; white-space: nowrap;" onclick="copyText('subject-portal-text')">📋 Copy</button>
+          </div>
+          <div style="background: var(--slate-100); border: 1px solid var(--slate-200); border-radius: 6px; padding: 0.75rem 1rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem;">
+            <div>
+              <div style="font-size: 0.75rem; font-weight: 600; color: var(--slate-500); text-transform: uppercase; letter-spacing: 0.05em;">Bank Email Subject</div>
+              <div id="subject-bank-text" style="font-size: 0.85rem; font-family: var(--font-mono); color: var(--navy-800); margin-top: 0.2rem;"></div>
+            </div>
+            <button class="btn btn-secondary" style="padding: 0.35rem 0.75rem; font-size: 0.8rem; white-space: nowrap;" onclick="copyText('subject-bank-text')">📋 Copy</button>
+          </div>
+        </div>
+
+        <!-- Tab navigation for the 2 drafts -->
+        <div class="tabs-header" style="background: var(--slate-100); border-radius: 6px 6px 0 0;">
+          <button class="tab-btn active" id="draft-tab-portal" onclick="switchDraftTab('portal')">
+            🏛️ National Cyber Crime Portal (cybercrime.gov.in) Draft
+          </button>
+          <button class="tab-btn" id="draft-tab-bank" onclick="switchDraftTab('bank')">
+            🏦 Bank Immediate Freeze Notice
+          </button>
+        </div>
+
+        <!-- Output Draft 1: Portal -->
+        <div id="draft-content-portal" style="background: var(--slate-100); border: 1.5px solid var(--slate-200); border-top: none; padding: 1.5rem; border-radius: 0 0 6px 6px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.85rem;">
+            <span style="font-size: 0.88rem; font-weight: 700; color: var(--navy-900);">Ready to paste into cybercrime.gov.in:</span>
+            <button class="btn btn-secondary" style="padding: 0.4rem 0.8rem; font-size: 0.82rem;" onclick="copyDraft('portal-draft-text')">📋 Copy Draft Text</button>
+          </div>
+          <pre id="portal-draft-text" style="white-space: pre-wrap; font-family: var(--font-mono); font-size: 0.84rem; background: var(--bg-card); padding: 1.25rem; border: 1.5px solid var(--slate-200); border-radius: 6px; max-height: 400px; overflow-y: auto; color: var(--navy-800);"></pre>
+        </div>
+
+        <!-- Output Draft 2: Bank Freeze -->
+        <div id="draft-content-bank" style="display: none; background: var(--slate-100); border: 1.5px solid var(--slate-200); border-top: none; padding: 1.5rem; border-radius: 0 0 6px 6px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.85rem;">
+            <span style="font-size: 0.88rem; font-weight: 700; color: var(--navy-900);">Ready to email to your bank's fraud desk:</span>
+            <button class="btn btn-secondary" style="padding: 0.4rem 0.8rem; font-size: 0.82rem;" onclick="copyDraft('bank-draft-text')">📋 Copy Email Text</button>
+          </div>
+          <pre id="bank-draft-text" style="white-space: pre-wrap; font-family: var(--font-mono); font-size: 0.84rem; background: var(--bg-card); padding: 1.25rem; border: 1.5px solid var(--slate-200); border-radius: 6px; max-height: 400px; overflow-y: auto; color: var(--navy-800);"></pre>
+        </div>
+
+        <!-- Legal Sections Panel -->
+        <div id="complaint-legal-section" style="margin-top: 1.5rem; background: var(--accent-blue-subtle, #eff6ff); border: 1.5px solid var(--accent-blue-border, #bfdbfe); border-radius: 8px; padding: 1.25rem 1.5rem;">
+          <h4 style="margin: 0 0 0.6rem; font-size: 0.95rem; color: var(--accent-blue, #2563eb);">⚖️ Applicable Legal Provisions (BNS 2023 + IT Act)</h4>
+          <ul id="complaint-legal-list" style="margin: 0; padding-left: 1.25rem; font-size: 0.85rem; color: var(--navy-800); line-height: 1.8;"></ul>
+        </div>
+
+        <!-- Generated timestamp -->
+        <div style="margin-top: 1rem; text-align: right; font-size: 0.78rem; color: var(--slate-400);">
+          Generated by JobShield on <span id="complaint-generated-at"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Official Portals Grid -->
+    <div style="margin-top: 3rem;">
+      <h3 style="font-size: 1.35rem; color: var(--navy-900); margin-bottom: 1.25rem; text-align: center;">Official Indian Cyber Defense Portals</h3>
+      <div class="steps-grid">
+        <div class="step-card">
+          <h4>🏛️ Cybercrime.gov.in</h4>
+          <p>National Cyber Crime Reporting Portal under Ministry of Home Affairs (MHA) for pan-India FIR registration.</p>
+          <a href="https://cybercrime.gov.in" target="_blank" class="btn btn-secondary" style="margin-top: 1rem; width: 100%;">Visit cybercrime.gov.in</a>
+        </div>
+        <div class="step-card">
+          <h4>📱 Sanchar Saathi (Chakshu)</h4>
+          <p>Department of Telecommunications (DoT) citizen portal to report fraud calls, SMS, and WhatsApp recruiters.</p>
+          <a href="https://sancharsaathi.gov.in" target="_blank" class="btn btn-secondary" style="margin-top: 1rem; width: 100%;">Visit sancharsaathi.gov.in</a>
+        </div>
+        <div class="step-card">
+          <h4>🏦 RBI Banking Ombudsman</h4>
+          <p>Reserve Bank of India complaint management system for unresolved financial fraud disputes with banks.</p>
+          <a href="https://cms.rbi.org.in" target="_blank" class="btn btn-secondary" style="margin-top: 1rem; width: 100%;">Visit cms.rbi.org.in</a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <p><strong>JobShield Victim Response Desk</strong> – "Scam hone se pehle pakdo" | Helpline: <strong>1930</strong></p>
+    <div class="footer-links">
+      <a href="/">Home Scanner</a>
+      <a href="/verify.html">Forensic Verifier</a>
+      <a href="/learn.html">Student Awareness</a>
+    </div>
+  </footer>
+
+  <script>
+    async function handleGenerateComplaint(e) {
+      e.preventDefault();
+
+      const btn = e.target.querySelector('[type="submit"]');
+      const origText = btn.textContent;
+      btn.textContent = '⏳ Generating…';
+      btn.disabled = true;
+
+      const payload = {
+        complainant_name: document.getElementById("comp-name")?.value.trim(),
+        complainant_phone: document.getElementById("comp-phone")?.value.trim(),
+        complainant_city: document.getElementById("comp-city")?.value.trim(),
+        suspect_company: document.getElementById("comp-suspect-comp")?.value.trim(),
+        suspect_name: document.getElementById("comp-suspect-name")?.value.trim(),
+        suspect_phone: document.getElementById("comp-suspect-phone")?.value.trim(),
+        suspect_email: document.getElementById("comp-suspect-email")?.value.trim(),
+        suspect_upi: document.getElementById("comp-suspect-upi")?.value.trim(),
+        amount_lost: parseFloat(document.getElementById("comp-amount")?.value || 0),
+        utr_number: document.getElementById("comp-utr")?.value.trim(),
+        narrative: document.getElementById("comp-narrative")?.value.trim(),
+        scam_category: "Employment / Fake Job Offer Fraud"
+      };
+
+      try {
+        const res = await fetch("/api/generate-complaint", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+
+        if (!res.ok) throw new Error(`Server error ${res.status}`);
+        const data = await res.json();
+
+        // Fill portal + bank drafts
+        document.getElementById("portal-draft-text").textContent = data.portal_draft || data.portal_complaint_text || "";
+        document.getElementById("bank-draft-text").textContent = data.bank_freeze_notice || data.bank_freeze_letter || "";
+
+        // Subject lines
+        if (data.subject_portal) document.getElementById("subject-portal-text").textContent = data.subject_portal;
+        if (data.subject_bank) document.getElementById("subject-bank-text").textContent = data.subject_bank;
+        const subjectsSection = document.getElementById("complaint-subjects-section");
+        if (subjectsSection) subjectsSection.style.display = (data.subject_portal || data.subject_bank) ? 'grid' : 'none';
+
+        // Action checklist
+        const checklist = data.action_checklist || [];
+        const ol = document.getElementById("complaint-checklist");
+        if (ol) {
+          ol.innerHTML = "";
+          checklist.forEach(step => {
+            const li = document.createElement("li");
+            li.textContent = step;
+            li.style.marginBottom = "0.35rem";
+            ol.appendChild(li);
+          });
+        }
+
+        // Legal sections
+        const legalList = document.getElementById("complaint-legal-list");
+        if (legalList) {
+          legalList.innerHTML = "";
+          (data.applicable_legal_sections || []).forEach(section => {
+            const li = document.createElement("li");
+            li.textContent = section;
+            legalList.appendChild(li);
+          });
+        }
+
+        // Generated timestamp
+        if (data.generated_at) {
+          const ts = document.getElementById("complaint-generated-at");
+          if (ts) ts.textContent = new Date(data.generated_at + 'Z').toLocaleString('en-IN');
+        }
+
+        // Show output + scroll
+        const outSection = document.getElementById("complaint-output-section");
+        outSection.style.display = "block";
+        outSection.scrollIntoView({ behavior: "smooth" });
+      } catch (err) {
+        alert("Failed to generate complaint draft: " + err.message);
+      } finally {
+        btn.textContent = origText;
+        btn.disabled = false;
+      }
+    }
+
+    function switchDraftTab(tab) {
+      document.getElementById("draft-tab-portal").classList.toggle("active", tab === "portal");
+      document.getElementById("draft-tab-bank").classList.toggle("active", tab === "bank");
+
+      document.getElementById("draft-content-portal").style.display = tab === "portal" ? "block" : "none";
+      document.getElementById("draft-content-bank").style.display = tab === "bank" ? "block" : "none";
+    }
+
+    function copyDraft(elemId) {
+      const text = document.getElementById(elemId)?.textContent;
+      if (!text) return;
+      navigator.clipboard.writeText(text)
+        .then(() => alert("Copied to clipboard!"))
+        .catch(() => alert("Could not copy automatically. Please select and copy manually."));
+    }
+
+    function copyText(elemId) {
+      const text = document.getElementById(elemId)?.textContent;
+      if (!text) return;
+      navigator.clipboard.writeText(text)
+        .then(() => alert("Copied!"))
+        .catch(() => alert("Please copy manually."));
+    }
+  </script>
+  <script src="/js/app.js"></script>
+</body>
+</html>
